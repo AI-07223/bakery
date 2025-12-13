@@ -7,55 +7,57 @@ export default function Hero() {
   const { title, subtitle, ctaText, backgroundImage } = siteConfig.content.hero;
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center text-center">
-      {/* Background Image with Overlay */}
+    <div className="relative h-[90vh] w-full overflow-hidden flex items-center justify-center text-center">
+      {/* Background Image with Parallax-like fixed feel via styling */}
       <div
-        className="absolute inset-0 bg-cover bg-center z-0"
+        className="absolute inset-0 bg-cover bg-center z-0 scale-105"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        {/* Modern Gradient Overlay: darker at bottom for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60"></div>
       </div>
 
-      <div className="relative z-10 px-4 max-w-4xl mx-auto text-white">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold font-heading mb-6 drop-shadow-lg"
+      <div className="relative z-10 px-6 max-w-5xl mx-auto text-white">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
         >
-          {title}
-        </motion.h1>
+            <h1 className="text-6xl md:text-8xl font-bold font-heading mb-6 drop-shadow-2xl tracking-tight leading-tight">
+            {title}
+            </h1>
+        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl mb-8 font-light drop-shadow-md"
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
-          {subtitle}
-        </motion.p>
+            <p className="text-lg md:text-2xl mb-10 font-light tracking-wide opacity-90 max-w-2xl mx-auto">
+            {subtitle}
+            </p>
+        </motion.div>
 
         <motion.button
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-          className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-transform hover:scale-105"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+          className="bg-white text-black hover:bg-primary hover:text-white font-body text-sm uppercase tracking-[0.2em] font-bold py-4 px-10 rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1"
         >
           {ctaText}
         </motion.button>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Minimal Line */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center gap-2"
       >
-        <p className="text-sm uppercase tracking-widest mb-2">Scroll to Build</p>
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-1 mx-auto">
-            <div className="w-1 h-3 bg-white/80 rounded-full"></div>
-        </div>
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent"></div>
       </motion.div>
     </div>
   );

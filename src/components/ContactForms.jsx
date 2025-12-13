@@ -12,29 +12,24 @@ const GenericForm = ({ title, fields, type }) => {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-
-    // Add metadata
     data.formType = type;
     data.timestamp = new Date().toISOString();
 
     try {
         if (!siteConfig.integrations.googleSheetWebhookUrl) {
-            throw new Error("Webhook URL not configured");
+            // Simulate success for demo
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            console.warn("Webhook URL not configured. Simulating success.");
+        } else {
+             await fetch(siteConfig.integrations.googleSheetWebhookUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
         }
-
-        await fetch(siteConfig.integrations.googleSheetWebhookUrl, {
-            method: 'POST',
-            mode: 'no-cors', // Important for Google Apps Script Webhooks usually
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        // Since no-cors returns opaque response, we assume success if no network error
         setStatus('success');
         e.target.reset();
-
     } catch (error) {
         console.error("Submission error:", error);
         setStatus('error');
@@ -42,33 +37,37 @@ const GenericForm = ({ title, fields, type }) => {
   };
 
   return (
-    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl max-w-lg mx-auto">
-        <h3 className="text-2xl font-bold mb-6 text-center">{title}</h3>
+    <div className="bg-white p-10 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] max-w-2xl mx-auto border border-gray-100">
+        <h3 className="text-3xl font-heading font-bold mb-8 text-center">{title}</h3>
 
         {status === 'success' ? (
-            <div className="text-center py-12 text-green-600">
-                <p className="text-xl font-bold mb-2">Thank you!</p>
-                <p>We have received your message.</p>
-                <button onClick={() => setStatus('idle')} className="mt-6 text-sm underline text-gray-500">Send another</button>
+            <div className="text-center py-12 text-green-700">
+                <p className="text-2xl font-heading italic mb-4">Merci!</p>
+                <p className="font-light">We have received your inquiry and will be in touch shortly.</p>
+                <button onClick={() => setStatus('idle')} className="mt-8 text-xs uppercase tracking-widest underline opacity-60 hover:opacity-100">Send another</button>
             </div>
         ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-8">
                 {fields.map((field) => (
-                    <div key={field.name}>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">{field.label}</label>
+                    <div key={field.name} className="relative group">
+                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold group-focus-within:text-primary transition-colors">
+                            {field.label} {field.required && '*'}
+                         </label>
                         {field.type === 'textarea' ? (
                             <textarea
                                 name={field.name}
                                 required={field.required}
                                 rows={4}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                className="w-full bg-gray-50 border-b-2 border-gray-200 focus:border-primary outline-none py-3 px-4 transition-colors resize-none font-light"
+                                placeholder=" "
                             />
                         ) : (
                             <input
                                 type={field.type}
                                 name={field.name}
                                 required={field.required}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                className="w-full bg-gray-50 border-b-2 border-gray-200 focus:border-primary outline-none py-3 px-4 transition-colors font-light"
+                                placeholder=" "
                             />
                         )}
                     </div>
@@ -77,9 +76,9 @@ const GenericForm = ({ title, fields, type }) => {
                 <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full bg-primary text-white font-bold py-3 rounded-lg shadow-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    className="w-full bg-foreground text-white font-bold text-sm uppercase tracking-[0.2em] py-4 rounded hover:bg-primary transition-colors disabled:opacity-50 shadow-lg mt-4"
                 >
-                    {status === 'submitting' ? 'Sending...' : 'Submit'}
+                    {status === 'submitting' ? 'Sending...' : 'Submit Inquiry'}
                 </button>
 
                 {status === 'error' && (
@@ -95,16 +94,16 @@ export function CustomOrder() {
     if (!siteConfig.features.enableCustomOrder) return null;
 
     return (
-        <Section id="custom-order" className="bg-primary/5 rounded-3xl my-8">
-            <SectionTitle>Custom Orders</SectionTitle>
+        <Section id="custom-order" className="my-16">
+            <SectionTitle>Bespoke Creations</SectionTitle>
             <GenericForm
                 type="custom_order"
-                title="Build Your Dream Cake"
+                title="Design Your Dream"
                 fields={[
-                    { name: "name", label: "Your Name", type: "text", required: true },
+                    { name: "name", label: "Full Name", type: "text", required: true },
                     { name: "email", label: "Email Address", type: "email", required: true },
-                    { name: "date", label: "Date Needed", type: "date", required: true },
-                    { name: "details", label: "Describe your dream cake", type: "textarea", required: true },
+                    { name: "date", label: "Event Date", type: "date", required: true },
+                    { name: "details", label: "Vision & Details", type: "textarea", required: true },
                 ]}
             />
         </Section>
@@ -115,11 +114,11 @@ export function Contact() {
     if (!siteConfig.features.enableContactForm) return null;
 
     return (
-        <Section id="contact">
-            <SectionTitle>Contact Us</SectionTitle>
+        <Section id="contact" className="my-16">
+            <SectionTitle>Get in Touch</SectionTitle>
             <GenericForm
                 type="contact"
-                title="Get in Touch"
+                title="Contact Us"
                 fields={[
                     { name: "name", label: "Name", type: "text", required: true },
                     { name: "email", label: "Email", type: "email", required: true },

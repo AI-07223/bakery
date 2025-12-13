@@ -3,14 +3,48 @@
 @tailwind utilities;
 
 :root {
-  /* Default Theme: Warm & Cozy (Rustic) as a base */
-  --color-primary: #d97706; /* Amber 600 */
-  --color-secondary: #fcd34d; /* Amber 300 */
-  --color-background: #fffbeb; /* Amber 50 */
-  --color-foreground: #451a03; /* Amber 950 */
+  /* Default Fallback Theme */
+  --color-primary: #d97706;
+  --color-secondary: #fcd34d;
+  --color-background: #fffbeb;
+  --color-foreground: #451a03;
+  --color-accent: #e5e5e5;
+  --font-heading: serif;
+  --font-body: sans-serif;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
+
+/* Custom Scrollbar for Chrome/Safari/Webkit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Utility classes for Glassmorphism & Soft Shadows if needed directly in CSS */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
