@@ -3,81 +3,85 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { siteConfig } from '../config/siteConfig';
 
-// Helper to darken a color slightly for 3D effect (very basic implementation)
-// Ideally we'd use a color library, but for a config file, we can just rely on the user providing a main color
-// and we assume the gradient logic here uses the config values.
-
 export default function InteractiveCake() {
   const { scrollYProgress } = useScroll();
   const { cakeTheme } = siteConfig.theme;
 
-  // Scroll mapping
-  const plateOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  const baseOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
-  const midOpacity = useTransform(scrollYProgress, [0.25, 0.4], [0, 1]);
-  const topOpacity = useTransform(scrollYProgress, [0.4, 0.55], [0, 1]);
-  const frostingOpacity = useTransform(scrollYProgress, [0.55, 0.7], [0, 1]);
-  const toppingOpacity = useTransform(scrollYProgress, [0.7, 0.85], [0, 1]);
-  const flagOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
+  // Refined Scroll Mapping for a smoother build
+  // 0.0 - 0.2: Plate slides in
+  // 0.2 - 0.8: Layers build up
+  // 0.8 - 0.9: Toppings/Frosting
+  // 0.9 - 1.0: Branding Topper & CTA
 
-  const plateY = useTransform(scrollYProgress, [0, 0.1], [100, 0]);
-  const baseY = useTransform(scrollYProgress, [0.1, 0.25], [-100, 0]);
-  const midY = useTransform(scrollYProgress, [0.25, 0.4], [-100, 0]);
-  const topY = useTransform(scrollYProgress, [0.4, 0.55], [-100, 0]);
-  const frostingY = useTransform(scrollYProgress, [0.55, 0.7], [-50, 0]);
-  const toppingY = useTransform(scrollYProgress, [0.7, 0.85], [-50, 0]);
-  const flagY = useTransform(scrollYProgress, [0.85, 0.95], [-50, 0]);
+  const plateOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const plateY = useTransform(scrollYProgress, [0, 0.15], [100, 0]);
+
+  const baseOpacity = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
+  const baseY = useTransform(scrollYProgress, [0.15, 0.3], [-100, 0]);
+
+  const midOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+  const midY = useTransform(scrollYProgress, [0.3, 0.5], [-100, 0]);
+
+  const topOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
+  const topY = useTransform(scrollYProgress, [0.5, 0.7], [-100, 0]);
+
+  const frostingOpacity = useTransform(scrollYProgress, [0.7, 0.85], [0, 1]);
+  const frostingY = useTransform(scrollYProgress, [0.7, 0.85], [-50, 0]);
+
+  // Branding Topper - appears last as the "Crown"
+  const topperOpacity = useTransform(scrollYProgress, [0.85, 0.98], [0, 1]);
+  const topperScale = useTransform(scrollYProgress, [0.85, 0.98], [0.5, 1]);
+  const topperY = useTransform(scrollYProgress, [0.85, 0.98], [20, 0]);
 
   const handleCakeClick = () => {
     window.open(`https://wa.me/${siteConfig.brand.whatsappNumber}`, '_blank');
   };
 
   return (
-    // CHANGED: z-index 30 to sit above content, bottom-0 right-0 for mobile positioning
-    // Added pointer-events-none to the container so it doesn't block scrolling/clicks on the left side
-    <div className="fixed inset-0 pointer-events-none z-30 flex items-end justify-center md:justify-end md:items-end pb-8 md:pb-12 md:pr-12">
-        {/* Defs for gradients using Config Colors */}
+    // Fixed container, Centered horizontally.
+    // Z-index 30 to stay above content.
+    // Pointer events none on wrapper to allow clicking through to content on the sides.
+    <div className="fixed inset-0 pointer-events-none z-30 flex items-end justify-center pb-16">
+
+        {/* SVG Defs for Gradients */}
         <svg width="0" height="0">
             <defs>
                 <linearGradient id="cakeGradientBase" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style={{stopColor: cakeTheme.baseColor, stopOpacity: 1}} />
-                    <stop offset="50%" style={{stopColor: cakeTheme.midColor, stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: cakeTheme.baseColor, stopOpacity: 1}} />
-                </linearGradient>
-                <linearGradient id="cakeGradientMid" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style={{stopColor: cakeTheme.midColor, stopOpacity: 1}} />
-                    <stop offset="50%" style={{stopColor: cakeTheme.topColor, stopOpacity: 1}} />
+                    <stop offset="30%" style={{stopColor: cakeTheme.midColor, stopOpacity: 1}} />
+                    <stop offset="60%" style={{stopColor: cakeTheme.baseColor, stopOpacity: 1}} />
                     <stop offset="100%" style={{stopColor: cakeTheme.midColor, stopOpacity: 1}} />
                 </linearGradient>
-                 <linearGradient id="cakeGradientTop" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style={{stopColor: cakeTheme.baseColor, stopOpacity: 1}} />
-                    <stop offset="50%" style={{stopColor: cakeTheme.midColor, stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: cakeTheme.baseColor, stopOpacity: 1}} />
-                </linearGradient>
-                <linearGradient id="frostingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style={{stopColor: cakeTheme.frostingColor, stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: cakeTheme.frostingShadow, stopOpacity: 1}} />
-                </linearGradient>
+                <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                    <feOffset dx="0" dy="4" result="offsetblur"/>
+                    <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.2"/>
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
             </defs>
         </svg>
 
-      <div className="relative w-64 h-64 md:w-80 md:h-80 pointer-events-auto cursor-pointer transform md:scale-90 lg:scale-100 origin-bottom-right" onClick={handleCakeClick}>
+      {/* The Cake Container - Pointer events auto to allow clicking the cake itself */}
+      <div className="relative w-72 h-72 md:w-96 md:h-96 pointer-events-auto cursor-pointer" onClick={handleCakeClick}>
 
-        {/* Plate */}
+        {/* Plate - Centered */}
         <motion.div
             style={{ opacity: plateOpacity, y: plateY }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-6 bg-white rounded-[50%] shadow-xl border-b-4 border-gray-100 md:w-80"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-6 bg-white rounded-[50%] shadow-[0_10px_20px_rgba(0,0,0,0.1)] border-b-4 border-gray-100 md:w-96"
         />
 
         {/* Base Layer */}
         <motion.div
             style={{ opacity: baseOpacity, y: baseY }}
-            className="absolute bottom-5 left-1/2 -translate-x-1/2 w-56 h-20 md:w-68 md:h-24"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 w-64 h-24 md:w-80 md:h-28"
         >
-             <svg viewBox="0 0 100 40" className="w-full h-full drop-shadow-lg" preserveAspectRatio="none">
-                 {/* 3D Side */}
+             <svg viewBox="0 0 100 40" className="w-full h-full filter drop-shadow-lg" preserveAspectRatio="none">
                 <path d="M5,10 L5,30 C5,35.5 25.1,40 50,40 C74.9,40 95,35.5 95,30 L95,10" fill="url(#cakeGradientBase)" />
-                 {/* Top Surface */}
                 <ellipse cx="50" cy="10" rx="45" ry="5" fill={cakeTheme.midColor} />
             </svg>
         </motion.div>
@@ -85,12 +89,10 @@ export default function InteractiveCake() {
         {/* Mid Layer */}
         <motion.div
             style={{ opacity: midOpacity, y: midY }}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 w-44 h-20 md:w-52 md:h-24"
+            className="absolute bottom-28 left-1/2 -translate-x-1/2 w-48 h-20 md:w-60 md:h-24"
         >
-             <svg viewBox="0 0 100 40" className="w-full h-full drop-shadow-lg" preserveAspectRatio="none">
-                 {/* 3D Side */}
-                <path d="M5,10 L5,30 C5,35.5 25.1,40 50,40 C74.9,40 95,35.5 95,30 L95,10" fill="url(#cakeGradientMid)" />
-                 {/* Top Surface */}
+             <svg viewBox="0 0 100 40" className="w-full h-full filter drop-shadow-md" preserveAspectRatio="none">
+                <path d="M5,10 L5,30 C5,35.5 25.1,40 50,40 C74.9,40 95,35.5 95,30 L95,10" fill="url(#cakeGradientBase)" />
                 <ellipse cx="50" cy="10" rx="45" ry="5" fill={cakeTheme.topColor} />
             </svg>
         </motion.div>
@@ -98,12 +100,10 @@ export default function InteractiveCake() {
         {/* Top Layer */}
         <motion.div
             style={{ opacity: topOpacity, y: topY }}
-            className="absolute bottom-40 left-1/2 -translate-x-1/2 w-32 h-20 md:w-40 md:h-24"
+            className="absolute bottom-44 left-1/2 -translate-x-1/2 w-36 h-16 md:w-44 md:h-20"
         >
-             <svg viewBox="0 0 100 40" className="w-full h-full drop-shadow-lg" preserveAspectRatio="none">
-                 {/* 3D Side */}
-                <path d="M5,10 L5,30 C5,35.5 25.1,40 50,40 C74.9,40 95,35.5 95,30 L95,10" fill="url(#cakeGradientTop)" />
-                 {/* Top Surface */}
+             <svg viewBox="0 0 100 40" className="w-full h-full filter drop-shadow-sm" preserveAspectRatio="none">
+                <path d="M5,10 L5,30 C5,35.5 25.1,40 50,40 C74.9,40 95,35.5 95,30 L95,10" fill="url(#cakeGradientBase)" />
                 <ellipse cx="50" cy="10" rx="45" ry="5" fill={cakeTheme.midColor} />
             </svg>
         </motion.div>
@@ -111,40 +111,49 @@ export default function InteractiveCake() {
         {/* Frosting Drips */}
         <motion.div
             style={{ opacity: frostingOpacity, y: frostingY }}
-            className="absolute bottom-[14rem] left-1/2 -translate-x-1/2 w-34 md:w-42 z-20"
+            className="absolute bottom-[14.5rem] left-1/2 -translate-x-1/2 w-38 md:w-46 z-20"
         >
-            <svg viewBox="0 0 100 25" className="w-full drop-shadow-md">
-                <path d="M0,5 C0,5 10,15 20,5 C20,5 30,-5 40,5 C40,5 50,20 60,5 C60,5 70,10 80,5 C80,5 90,0 100,5 L100,0 L0,0 Z" fill="url(#frostingGradient)" />
+            <svg viewBox="0 0 100 25" className="w-full filter drop-shadow-md" style={{ fill: cakeTheme.frostingColor }}>
+                <path d="M0,5 C0,5 10,15 20,5 C20,5 30,-5 40,5 C40,5 50,20 60,5 C60,5 70,10 80,5 C80,5 90,0 100,5 L100,0 L0,0 Z" />
             </svg>
         </motion.div>
 
-         {/* Toppings (Elegant Macarons/Berries) */}
+         {/* Toppings (Berries) */}
          <motion.div
-            style={{ opacity: toppingOpacity, y: toppingY }}
-            className="absolute bottom-[14.5rem] left-1/2 -translate-x-1/2 flex gap-1 z-20"
+            style={{ opacity: frostingOpacity, y: frostingY }}
+            className="absolute bottom-[15rem] left-1/2 -translate-x-1/2 flex gap-1 z-20"
         >
-            <div className="w-5 h-5 rounded-full bg-red-800 shadow-sm border border-red-900/20"></div>
-            <div className="w-6 h-6 rounded-full bg-amber-700 shadow-sm -mt-2 border border-white/10"></div>
-            <div className="w-5 h-5 rounded-full bg-red-800 shadow-sm border border-red-900/20"></div>
+            <div className="w-4 h-4 rounded-full bg-red-800 shadow-sm"></div>
+            <div className="w-5 h-5 rounded-full bg-red-900 shadow-sm -mt-1"></div>
+            <div className="w-4 h-4 rounded-full bg-red-800 shadow-sm"></div>
         </motion.div>
 
-        {/* Flag */}
+        {/* BRANDING TOPPER - The "Grand Finale" */}
         <motion.div
-            style={{ opacity: flagOpacity, y: flagY }}
-            className="absolute bottom-[16rem] left-1/2 ml-2 w-0.5 h-16 bg-gray-400 z-10"
+            style={{ opacity: topperOpacity, scale: topperScale, y: topperY }}
+            className="absolute bottom-[17rem] left-1/2 -translate-x-1/2 z-30"
         >
-            <div className="absolute top-0 left-0 bg-white/90 backdrop-blur text-foreground font-heading text-xs font-bold px-3 py-1 rounded shadow-lg transform -translate-y-1/2 origin-left border border-gray-200 whitespace-nowrap">
-                {siteConfig.brand.name}
+            <div className="relative">
+                {/* Gold stick */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-1 h-12 bg-yellow-600/50"></div>
+
+                {/* The "Sign" */}
+                <div className="bg-white/95 backdrop-blur-sm border border-primary/30 px-6 py-3 rounded-xl shadow-2xl flex flex-col items-center">
+                    <span className="font-heading font-bold text-xl md:text-2xl text-primary whitespace-nowrap tracking-tight">
+                        {siteConfig.brand.name}
+                    </span>
+                    <span className="text-[0.6rem] uppercase tracking-[0.2em] text-gray-500 mt-1">Est. 2010</span>
+                </div>
             </div>
         </motion.div>
 
-        {/* Call to Action Pulse */}
+        {/* Call to Action Button - Below the plate */}
         <motion.div
-            style={{ opacity: flagOpacity }}
-            className="absolute -bottom-8 left-1/2 -translate-x-1/2"
+            style={{ opacity: topperOpacity }}
+            className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full text-center"
         >
-             <button className="bg-primary text-white text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full shadow-lg animate-bounce hover:bg-white hover:text-primary transition-colors">
-                Order Now
+             <button className="bg-primary hover:bg-yellow-600 text-white font-heading font-bold uppercase tracking-widest text-sm px-8 py-3 rounded-full shadow-lg transition-colors duration-300">
+                Tap to Order
              </button>
         </motion.div>
 

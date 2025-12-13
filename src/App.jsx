@@ -30,24 +30,18 @@ function App() {
     const root = document.documentElement;
     const { colors, fonts } = siteConfig.theme;
 
-    // Set Colors
     root.style.setProperty('--color-primary', colors.primary);
     root.style.setProperty('--color-secondary', colors.secondary);
     root.style.setProperty('--color-background', colors.background);
     root.style.setProperty('--color-foreground', colors.foreground);
     root.style.setProperty('--color-accent', colors.accent);
-
-    // Set Fonts
     root.style.setProperty('--font-heading', fonts.heading);
     root.style.setProperty('--font-body', fonts.body);
 
-    // Inject Google Fonts
     const link = document.createElement('link');
     link.href = fonts.googleFontsUrl;
     link.rel = 'stylesheet';
     document.head.appendChild(link);
-
-    // Set Document Title
     document.title = siteConfig.brand.name;
 
     return () => {
@@ -59,17 +53,15 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden font-body text-foreground bg-background selection:bg-primary selection:text-white">
-      {/* Scroll Progress Bar at top */}
+      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-primary z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
-      {/* Navigation - Glassmorphism */}
+      {/* Navigation */}
       <nav className="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-40 bg-white/70 backdrop-blur-md shadow-sm border border-white/20 rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300">
         <div className="font-heading font-bold text-2xl text-foreground tracking-tight">{siteConfig.brand.name}</div>
-
-        {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
             <NavLink href="#">Home</NavLink>
             <NavLink href="#gallery">Collection</NavLink>
@@ -77,14 +69,12 @@ function App() {
             <NavLink href="#custom-order">Bespoke</NavLink>
             <NavLink href="#location">Visit</NavLink>
         </div>
-
-        {/* Mobile Menu Toggle */}
         <button className="md:hidden text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
           <div className="fixed inset-0 z-30 bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden">
               <NavLink href="#" setIsMobileMenuOpen={setIsMobileMenuOpen}>Home</NavLink>
@@ -97,12 +87,12 @@ function App() {
 
       <InteractiveCake />
 
-      <main className="relative z-20 pb-[50vh]">
+      <main className="relative z-20">
         <Hero />
 
-        {/* Content Container - lifted up to overlap hero slightly for depth */}
+        {/* Main Content */}
         <div className="relative -mt-20 bg-background rounded-t-[3rem] shadow-[0_-20px_60px_rgba(0,0,0,0.03)] border-t border-white/50 px-2 md:px-0">
-             <div className="pt-20">
+             <div className="pt-20 pb-20">
                 <Gallery />
                 <Menu />
                 <CustomOrder />
@@ -110,18 +100,22 @@ function App() {
                 <Contact />
              </div>
 
-             <div className="h-[40vh] flex items-end justify-center pb-8 text-center pointer-events-none">
-                <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl mb-24 pointer-events-auto inline-block border border-white/40">
-                    <p className="font-heading font-bold text-xl mb-2">{siteConfig.brand.name}</p>
-                    <p className="text-sm opacity-60 font-light mb-4">{siteConfig.brand.footerText}</p>
-                    <div className="flex gap-6 justify-center">
-                        {Object.entries(siteConfig.brand.socialLinks).map(([platform, url]) => (
-                            <a key={platform} href={url} target="_blank" rel="noreferrer" className="text-primary hover:text-foreground transition-colors capitalize text-xs tracking-widest font-bold">
-                                {platform}
-                            </a>
-                        ))}
-                    </div>
-                </div>
+             {/* THE GRAND FINALE SPACER
+                 This empty space allows the user to scroll "past" the content so the cake (which is fixed at bottom)
+                 can be seen clearly in the center without overlapping text.
+             */}
+             <div className="h-[80vh] w-full flex flex-col justify-end items-center pb-8 opacity-50 pointer-events-none">
+                 {/* Optional minimal footer links at the VERY bottom, below the cake if space permits,
+                     or just minimal copyright.
+                 */}
+                 <p className="text-xs uppercase tracking-widest mb-4">{siteConfig.brand.footerText}</p>
+                 <div className="flex gap-4">
+                    {Object.entries(siteConfig.brand.socialLinks).map(([platform, url]) => (
+                        <a key={platform} href={url} target="_blank" rel="noreferrer" className="pointer-events-auto hover:text-primary transition-colors capitalize text-xs font-bold">
+                            {platform}
+                        </a>
+                    ))}
+                 </div>
              </div>
         </div>
       </main>
