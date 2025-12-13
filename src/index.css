@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default Theme: Warm & Cozy (Rustic) as a base */
+  --color-primary: #d97706; /* Amber 600 */
+  --color-secondary: #fcd34d; /* Amber 300 */
+  --color-background: #fffbeb; /* Amber 50 */
+  --color-foreground: #451a03; /* Amber 950 */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
