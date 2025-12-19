@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Default Fallback Theme */
-  --color-primary: #d97706;
-  --color-secondary: #fcd34d;
-  --color-background: #fffbeb;
-  --color-foreground: #451a03;
-  --color-accent: #e5e5e5;
-  --font-heading: serif;
-  --font-body: sans-serif;
+  /* Lumière Patisserie Brand Theme */
+  --color-primary: #D4AF37;   /* Gold */
+  --color-secondary: #F9F5F0; /* Cream */
+  --color-background: #FFFFFF;
+  --color-foreground: #333333; /* Dark Grey/Black for text */
+  --color-accent: #2D2D2D;    /* Charcoal */
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
 }
 
 body {
