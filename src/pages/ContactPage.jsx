@@ -246,8 +246,8 @@ export default function ContactPage() {
                                                         onFocus={() => setFocusedField(field.name)}
                                                         onBlur={() => setFocusedField(null)}
                                                         className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-lg focus:outline-none transition-all duration-300 ${focusedField === field.name
-                                                                ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
-                                                                : 'border-gray-200'
+                                                            ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
+                                                            : 'border-gray-200'
                                                             }`}
                                                         required
                                                     />
@@ -273,8 +273,8 @@ export default function ContactPage() {
                                                 onFocus={() => setFocusedField('email')}
                                                 onBlur={() => setFocusedField(null)}
                                                 className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-lg focus:outline-none transition-all duration-300 ${focusedField === 'email'
-                                                        ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
-                                                        : 'border-gray-200'
+                                                    ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
+                                                    : 'border-gray-200'
                                                     }`}
                                                 required
                                             />
@@ -289,8 +289,8 @@ export default function ContactPage() {
                                                 onFocus={() => setFocusedField('message')}
                                                 onBlur={() => setFocusedField(null)}
                                                 className={`w-full px-4 py-4 bg-gray-50 border-2 rounded-lg focus:outline-none transition-all duration-300 resize-none ${focusedField === 'message'
-                                                        ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
-                                                        : 'border-gray-200'
+                                                    ? 'border-bakery-accent bg-white shadow-lg shadow-bakery-accent/10'
+                                                    : 'border-gray-200'
                                                     }`}
                                                 required
                                             />
@@ -302,8 +302,8 @@ export default function ContactPage() {
                                             whileHover={{ scale: formState.loading ? 1 : 1.02 }}
                                             whileTap={{ scale: formState.loading ? 1 : 0.98 }}
                                             className={`w-full font-bold py-4 rounded-lg flex justify-center items-center group transition-all duration-300 ${formState.loading
-                                                    ? 'bg-gray-400 cursor-not-allowed'
-                                                    : 'bg-bakery-dark text-white hover:bg-bakery-accent hover:text-bakery-dark btn-glow'
+                                                ? 'bg-gray-400 cursor-not-allowed'
+                                                : 'bg-bakery-dark text-white hover:bg-bakery-accent hover:text-bakery-dark btn-glow'
                                                 }`}
                                         >
                                             {formState.loading ? (

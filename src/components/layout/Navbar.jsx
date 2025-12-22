@@ -67,8 +67,8 @@ export default function Navbar() {
                                 key={link.name}
                                 to={link.path}
                                 className={`font-medium transition-all duration-300 relative ${isScrolled
-                                        ? 'text-bakery-dark hover:text-bakery-accent'
-                                        : 'text-white hover:text-bakery-accent'
+                                    ? 'text-bakery-dark hover:text-bakery-accent'
+                                    : 'text-bakery-dark hover:text-bakery-accent'
                                     } ${isActive(link.path) ? 'text-bakery-accent' : ''}`}
                             >
                                 {link.name}
@@ -157,8 +157,8 @@ export default function Navbar() {
                                                 <Link
                                                     to={link.path}
                                                     className={`flex items-center gap-4 px-4 py-4 rounded-xl transition-colors ${isActive(link.path)
-                                                            ? 'bg-bakery-accent/20 text-bakery-dark'
-                                                            : 'text-bakery-medium hover:bg-bakery-light'
+                                                        ? 'bg-bakery-accent/20 text-bakery-dark'
+                                                        : 'text-bakery-medium hover:bg-bakery-light'
                                                         }`}
                                                 >
                                                     <Icon size={22} className={isActive(link.path) ? 'text-bakery-accent' : ''} />

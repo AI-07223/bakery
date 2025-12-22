@@ -51,7 +51,7 @@ export default function ChefsWord() {
                             className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <img
-                                src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2070&auto=format&fit=crop"
+                                src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=2070&auto=format&fit=crop"
                                 alt="Chef Emile creating pastries"
                                 className="w-full h-full object-cover"
                             />

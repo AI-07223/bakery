@@ -3,7 +3,7 @@ import { Instagram, Heart, MessageCircle, ExternalLink } from 'lucide-react';
 
 const images = [
     {
-        url: "https://images.unsplash.com/photo-1549590143-d5855148a9f5?q=80&w=2070&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=2070&auto=format&fit=crop",
         likes: "2.4k",
         comments: "89"
     },
@@ -13,7 +13,7 @@ const images = [
         comments: "67"
     },
     {
-        url: "https://images.unsplash.com/photo-1626233771892-694031e67046?q=80&w=1974&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?q=80&w=2070&auto=format&fit=crop",
         likes: "3.1k",
         comments: "124"
     },
@@ -28,7 +28,7 @@ const images = [
         comments: "56"
     },
     {
-        url: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2070&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=2074&auto=format&fit=crop",
         likes: "4.2k",
         comments: "156"
     }

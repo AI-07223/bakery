@@ -127,7 +127,7 @@ export default function CorporateGifting() {
                         <div className="glass-card p-6 rounded-2xl max-w-sm">
                             <div className="relative rounded-xl overflow-hidden mb-4">
                                 <img
-                                    src="https://images.unsplash.com/photo-1549488352-226687bd5f52?q=80&w=3024&auto=format&fit=crop"
+                                    src="https://images.unsplash.com/photo-1607114910002-cb77e8f927c2?q=80&w=2070&auto=format&fit=crop"
                                     alt="Luxury Hamper"
                                     className="w-full h-64 object-cover"
                                 />

@@ -4,7 +4,7 @@ export const products = [
         name: "Classic Sourdough",
         category: "Breads",
         price: "$8.00",
-        image: "https://images.unsplash.com/photo-1585476263060-655bb643b22e?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=2070&auto=format&fit=crop",
         desc: "Wild yeast fermented for 48 hours, with a perfect crust. Our signature loaf uses organic wheat and a 100-year-old starter."
     },
     {
@@ -77,7 +77,7 @@ export const categories = [
     { name: "Cakes", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2089&auto=format&fit=crop" },
     { name: "Pastries", image: "https://images.unsplash.com/photo-1612203985729-70726954388c?q=80&w=1964&auto=format&fit=crop" },
     { name: "Breads", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop" },
-    { name: "Cookies", image: "https://images.unsplash.com/photo-1499636138143-bd630f5cf388?q=80&w=2070&auto=format&fit=crop" },
+    { name: "Cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=2070&auto=format&fit=crop" },
     { name: "Savories", image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=2070&auto=format&fit=crop" },
-    { name: "Hampers", image: "https://images.unsplash.com/photo-1549488352-226687bd5f52?q=80&w=3024&auto=format&fit=crop" },
+    { name: "Hampers", image: "https://images.unsplash.com/photo-1607114910002-cb77e8f927c2?q=80&w=2070&auto=format&fit=crop" },
 ];
