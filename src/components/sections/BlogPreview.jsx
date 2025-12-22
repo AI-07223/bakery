@@ -44,13 +44,13 @@ const cardVariants = {
 
 export default function BlogPreview() {
     return (
-        <section className="py-24 bg-bakery-paper border-t border-bakery-medium/10 relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-bakery-paper border-t border-bakery-medium/10 relative overflow-hidden">
             {/* Decorative background */}
-            <div className="absolute top-20 right-10 w-64 h-64 bg-bakery-accent/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 md:top-20 right-5 md:right-10 w-40 md:w-64 h-40 md:h-64 bg-bakery-accent/5 rounded-full blur-3xl"></div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -61,7 +61,7 @@ export default function BlogPreview() {
                             <BookOpen size={18} className="text-bakery-accent mr-2" />
                             <span className="text-bakery-accent font-bold tracking-widest uppercase">The Journal</span>
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-serif text-bakery-dark font-bold">Behind the Oven</h2>
+                        <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif text-bakery-dark font-bold">Behind the Oven</h2>
                     </motion.div>
 
                     <motion.div
@@ -88,7 +88,7 @@ export default function BlogPreview() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-10"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10"
                 >
                     {posts.map((post) => (
                         <motion.article
@@ -135,11 +135,11 @@ export default function BlogPreview() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-2xl font-serif font-bold text-bakery-dark mb-3 group-hover:text-bakery-accent transition-colors">
+                                <h3 className="text-xl md:text-2xl font-serif font-bold text-bakery-dark mb-2 md:mb-3 group-hover:text-bakery-accent transition-colors">
                                     {post.title}
                                 </h3>
 
-                                <p className="text-bakery-medium/80 leading-relaxed mb-4">
+                                <p className="text-bakery-medium/80 leading-relaxed mb-3 md:mb-4 text-sm md:text-base">
                                     {post.excerpt}
                                 </p>
 

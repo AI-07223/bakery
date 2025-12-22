@@ -12,9 +12,9 @@ export default function FeaturedProducts() {
     const { addToCart } = useCart();
 
     return (
-        <section className="py-24 bg-bakery-paper">
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+        <section className="py-16 md:py-24 bg-bakery-paper">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -22,7 +22,7 @@ export default function FeaturedProducts() {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="text-bakery-accent text-sm tracking-widest uppercase font-bold mb-2 block">Curated Selection</span>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-bakery-dark">Our Signatures</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-bakery-dark">Our Signatures</h2>
                     </motion.div>
 
                     <motion.div
@@ -39,7 +39,7 @@ export default function FeaturedProducts() {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
                     {featuredProducts.map((product, index) => (
                         <motion.div
                             key={product.id}
@@ -49,7 +49,7 @@ export default function FeaturedProducts() {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="group cursor-pointer"
                         >
-                            <div className="relative aspect-[4/5] overflow-hidden rounded-sm mb-6 bg-gray-100 group-hover:shadow-xl transition-shadow duration-300">
+                            <div className="relative aspect-[4/5] sm:aspect-[4/5] overflow-hidden rounded-sm mb-4 md:mb-6 bg-gray-100 group-hover:shadow-xl transition-shadow duration-300">
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -73,7 +73,7 @@ export default function FeaturedProducts() {
 
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-2xl font-serif text-bakery-dark mb-1 group-hover:text-bakery-accent transition-colors">{product.name}</h3>
+                                    <h3 className="text-xl md:text-2xl font-serif text-bakery-dark mb-1 group-hover:text-bakery-accent transition-colors">{product.name}</h3>
                                     <p className="text-gray-600 text-sm max-w-[250px]">{product.desc}</p>
                                 </div>
                                 <span className="text-lg font-medium text-bakery-dark font-serif">{product.price}</span>

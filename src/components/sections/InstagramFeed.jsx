@@ -56,13 +56,13 @@ const itemVariants = {
 
 export default function InstagramFeed() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
             {/* Decorative gradient */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-bakery-paper to-transparent"></div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-12">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -78,7 +78,7 @@ export default function InstagramFeed() {
                             </motion.div>
                             <span className="text-bakery-dark/50 text-sm tracking-widest uppercase font-bold">@lumiere.bakery</span>
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-serif font-bold text-bakery-dark">
+                        <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif font-bold text-bakery-dark">
                             Follow Our Journey
                         </h2>
                     </motion.div>
@@ -105,7 +105,7 @@ export default function InstagramFeed() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+                    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4"
                 >
                     {images.map((img, index) => (
                         <motion.div
@@ -177,7 +177,7 @@ export default function InstagramFeed() {
                         href="https://instagram.com"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold px-8 py-4 rounded-full"
+                        className="inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold px-6 py-3 rounded-full text-sm"
                     >
                         <Instagram size={20} className="mr-2" />
                         <span>Follow Us on Instagram</span>

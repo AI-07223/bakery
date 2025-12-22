@@ -12,10 +12,10 @@ export default function ChefsWord() {
     const textY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-bakery-paper relative overflow-hidden">
+        <section ref={sectionRef} className="py-16 md:py-24 bg-bakery-paper relative overflow-hidden">
             {/* Decorative elements */}
-            <div className="absolute top-20 right-10 w-64 h-64 bg-bakery-accent/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-10 w-48 h-48 bg-bakery-dark/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 md:top-20 right-5 md:right-10 w-40 md:w-64 h-40 md:h-64 bg-bakery-accent/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 md:bottom-20 left-5 md:left-10 w-32 md:w-48 h-32 md:h-48 bg-bakery-dark/5 rounded-full blur-3xl"></div>
 
             {/* Floating steam/aroma elements */}
             {[...Array(5)].map((_, i) => (
@@ -36,8 +36,8 @@ export default function ChefsWord() {
                 />
             ))}
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
                     {/* Image Side with Parallax */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -103,7 +103,7 @@ export default function ChefsWord() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
                         <span className="text-bakery-accent font-bold tracking-widest uppercase mb-4 block">A Note from the Chef</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-bakery-dark font-bold mb-8 leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-bakery-dark font-bold mb-6 md:mb-8 leading-tight">
                             Baking with <br />
                             <span className="gradient-text">Heart & Soul</span>
                         </h2>
@@ -114,7 +114,7 @@ export default function ChefsWord() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
-                                className="font-light italic text-xl border-l-4 border-bakery-accent pl-6"
+                                className="font-light italic text-lg md:text-xl border-l-4 border-bakery-accent pl-4 md:pl-6"
                             >
                                 "At Lumière, we believe that pastry is an edible art form. It's not just about the recipe; it's about the patience, the precision, and the respect for ingredients."
                             </motion.p>
@@ -150,7 +150,7 @@ export default function ChefsWord() {
                                 viewport={{ once: true }}
                                 className="mb-3"
                             >
-                                <svg width="200" height="60" viewBox="0 0 200 60" className="opacity-70">
+                                <svg width="150" height="45" viewBox="0 0 200 60" className="opacity-70 md:w-[200px] md:h-[60px]">
                                     <motion.path
                                         d="M10 45 Q 30 10, 50 35 T 90 30 Q 110 25, 130 40 T 180 35"
                                         fill="none"

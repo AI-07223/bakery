@@ -50,10 +50,10 @@ const cardVariants = {
 
 export default function Testimonials() {
     return (
-        <section className="py-24 bg-bakery-paper relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-bakery-paper relative overflow-hidden">
             {/* Decorative Background Elements */}
-            <div className="absolute top-20 right-20 w-72 h-72 bg-bakery-accent/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-20 w-64 h-64 bg-bakery-dark/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-10 md:top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-bakery-accent/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 md:bottom-20 left-10 md:left-20 w-40 md:w-64 h-40 md:h-64 bg-bakery-dark/5 rounded-full blur-3xl"></div>
 
             {/* Floating quote marks */}
             <motion.div
@@ -64,7 +64,8 @@ export default function Testimonials() {
                 transition={{ duration: 6, repeat: Infinity }}
                 className="absolute top-32 left-10 text-bakery-accent/10"
             >
-                <Quote size={120} />
+                <Quote size={60} className="md:hidden" />
+                <Quote size={120} className="hidden md:block" />
             </motion.div>
             <motion.div
                 animate={{
@@ -74,20 +75,21 @@ export default function Testimonials() {
                 transition={{ duration: 5, repeat: Infinity, delay: 1 }}
                 className="absolute bottom-32 right-10 text-bakery-accent/10 rotate-180"
             >
-                <Quote size={100} />
+                <Quote size={50} className="md:hidden" />
+                <Quote size={100} className="hidden md:block" />
             </motion.div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 md:mb-16"
                 >
                     <span className="text-bakery-accent font-bold tracking-widest uppercase mb-4 block">Community Love</span>
-                    <h2 className="text-4xl md:text-5xl font-serif text-bakery-dark font-bold mb-4">What People Say</h2>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-bakery-dark font-bold mb-3 md:mb-4">What People Say</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
                         Don't just take our word for it — hear from our beloved community.
                     </p>
@@ -99,7 +101,7 @@ export default function Testimonials() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                 >
                     {testimonials.map((t, i) => (
                         <motion.div
@@ -110,7 +112,7 @@ export default function Testimonials() {
                                 rotateY: 5,
                                 transition: { duration: 0.3 }
                             }}
-                            className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
+                            className="group bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
                             style={{ transformStyle: 'preserve-3d' }}
                         >
                             {/* Background gradient on hover */}
@@ -177,15 +179,15 @@ export default function Testimonials() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
-                    className="flex flex-wrap justify-center gap-8 mt-16 text-center"
+                    className="flex flex-wrap justify-center gap-4 md:gap-8 mt-10 md:mt-16 text-center"
                 >
                     {[
                         { value: "4.9", label: "Average Rating" },
                         { value: "2,500+", label: "Happy Customers" },
                         { value: "98%", label: "Would Recommend" }
                     ].map((stat, i) => (
-                        <div key={i} className="px-8">
-                            <span className="text-3xl font-serif font-bold text-bakery-dark">{stat.value}</span>
+                        <div key={i} className="px-4 md:px-8">
+                            <span className="text-2xl md:text-3xl font-serif font-bold text-bakery-dark">{stat.value}</span>
                             <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
                         </div>
                     ))}

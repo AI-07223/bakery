@@ -15,7 +15,7 @@ export default function OurStory() {
     const frameOffset = useTransform(scrollYProgress, [0, 0.5], [20, 8]);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-bakery-light overflow-hidden relative">
+        <section ref={sectionRef} className="py-16 md:py-24 bg-bakery-light overflow-hidden relative">
             {/* Floating wheat decorations */}
             <motion.div
                 animate={{
@@ -25,7 +25,8 @@ export default function OurStory() {
                 transition={{ duration: 6, repeat: Infinity }}
                 className="absolute top-20 right-20 text-bakery-accent/10"
             >
-                <Wheat size={80} />
+                <Wheat size={40} className="md:hidden" />
+                <Wheat size={80} className="hidden md:block" />
             </motion.div>
             <motion.div
                 animate={{
@@ -35,11 +36,12 @@ export default function OurStory() {
                 transition={{ duration: 5, repeat: Infinity, delay: 1 }}
                 className="absolute bottom-32 left-10 text-bakery-medium/10"
             >
-                <Wheat size={60} />
+                <Wheat size={30} className="md:hidden" />
+                <Wheat size={60} className="hidden md:block" />
             </motion.div>
 
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
 
                     {/* Image Side with 3D effect */}
                     <motion.div
@@ -138,7 +140,7 @@ export default function OurStory() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-bakery-medium/80 text-lg mb-6 leading-relaxed"
+                            className="text-bakery-medium/80 text-base md:text-lg mb-4 md:mb-6 leading-relaxed"
                         >
                             Founded in a small kitchen with a big dream, Lumière Bakery has been serving the community with artisanal breads and pastries since 1985. We believe that simple, high-quality ingredients are the secret to extraordinary flavor.
                         </motion.p>
@@ -148,7 +150,7 @@ export default function OurStory() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-bakery-medium/80 text-lg mb-8 leading-relaxed"
+                            className="text-bakery-medium/80 text-base md:text-lg mb-6 md:mb-8 leading-relaxed"
                         >
                             Every morning before the sun rises, our bakers are already hard at work, hand-crafting the loaves that will grace your tables. It's not just baking; it's a labor of love.
                         </motion.p>

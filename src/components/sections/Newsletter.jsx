@@ -18,7 +18,7 @@ export default function Newsletter() {
     };
 
     return (
-        <section className="py-24 bg-bakery-dark text-bakery-paper relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-bakery-dark text-bakery-paper relative overflow-hidden">
             {/* Animated background pattern */}
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
 
@@ -31,7 +31,8 @@ export default function Newsletter() {
                 transition={{ duration: 6, repeat: Infinity }}
                 className="absolute top-20 left-10 text-bakery-accent/20"
             >
-                <Mail size={80} />
+                <Mail size={40} className="md:hidden" />
+                <Mail size={80} className="hidden md:block" />
             </motion.div>
             <motion.div
                 animate={{
@@ -41,7 +42,8 @@ export default function Newsletter() {
                 transition={{ duration: 5, repeat: Infinity, delay: 1 }}
                 className="absolute bottom-20 right-20 text-bakery-accent/20"
             >
-                <Gift size={60} />
+                <Gift size={30} className="md:hidden" />
+                <Gift size={60} className="hidden md:block" />
             </motion.div>
 
             {/* Glowing orbs */}
@@ -51,7 +53,7 @@ export default function Newsletter() {
                     opacity: [0.1, 0.2, 0.1]
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute top-1/2 left-1/4 w-64 h-64 bg-bakery-accent rounded-full blur-3xl -translate-y-1/2"
+                className="absolute top-1/2 left-1/4 w-40 md:w-64 h-40 md:h-64 bg-bakery-accent rounded-full blur-3xl -translate-y-1/2"
             />
             <motion.div
                 animate={{
@@ -59,10 +61,10 @@ export default function Newsletter() {
                     opacity: [0.05, 0.1, 0.05]
                 }}
                 transition={{ duration: 5, repeat: Infinity, delay: 2 }}
-                className="absolute top-1/2 right-1/4 w-80 h-80 bg-white rounded-full blur-3xl -translate-y-1/2"
+                className="absolute top-1/2 right-1/4 w-48 md:w-80 h-48 md:h-80 bg-white rounded-full blur-3xl -translate-y-1/2"
             />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <AnimatePresence mode="wait">
                     {status === 'success' ? (
                         <motion.div
@@ -80,7 +82,7 @@ export default function Newsletter() {
                             >
                                 <Check size={48} className="text-white" />
                             </motion.div>
-                            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Welcome to the Family!</h2>
+                            <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif font-bold mb-4 md:mb-6">Welcome to the Family!</h2>
                             <p className="text-bakery-light/80 text-lg mb-8">
                                 You're now part of our inner circle. Get ready for exclusive offers,
                                 early access, and delicious updates straight to your inbox.
@@ -116,7 +118,7 @@ export default function Newsletter() {
                                     <span className="text-bakery-accent font-bold tracking-widest uppercase text-sm">Exclusive Access</span>
                                     <Sparkles size={20} className="text-bakery-accent ml-2 animate-pulse-soft" />
                                 </div>
-                                <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Join the Inner Circle</h2>
+                                <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif font-bold mb-4 md:mb-6">Join the Inner Circle</h2>
                                 <p className="text-bakery-light/80 text-lg">
                                     Receive exclusive offers, early access to seasonal menus, and baking tips straight from our kitchen.
                                 </p>
@@ -135,8 +137,8 @@ export default function Newsletter() {
                                             onBlur={() => setIsFocused(false)}
                                             placeholder="Your email address"
                                             className={`w-full bg-white/10 border-2 text-white placeholder-white/50 pl-12 pr-6 py-4 rounded-full focus:outline-none transition-all duration-300 ${isFocused
-                                                    ? 'border-bakery-accent bg-white/20 shadow-lg shadow-bakery-accent/20'
-                                                    : 'border-bakery-light/20'
+                                                ? 'border-bakery-accent bg-white/20 shadow-lg shadow-bakery-accent/20'
+                                                : 'border-bakery-light/20'
                                                 }`}
                                             required
                                         />
@@ -147,8 +149,8 @@ export default function Newsletter() {
                                         whileHover={{ scale: status === 'loading' ? 1 : 1.05 }}
                                         whileTap={{ scale: status === 'loading' ? 1 : 0.95 }}
                                         className={`font-bold px-8 py-4 rounded-full transition-all duration-300 flex items-center justify-center min-w-[140px] ${status === 'loading'
-                                                ? 'bg-gray-400 cursor-not-allowed'
-                                                : 'bg-bakery-accent text-bakery-dark hover:bg-white btn-glow'
+                                            ? 'bg-gray-400 cursor-not-allowed'
+                                            : 'bg-bakery-accent text-bakery-dark hover:bg-white btn-glow'
                                             }`}
                                     >
                                         {status === 'loading' ? (
@@ -174,7 +176,7 @@ export default function Newsletter() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
-                                className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-bakery-light/60"
+                                className="mt-8 md:mt-12 flex flex-wrap justify-center gap-4 md:gap-6 text-sm text-bakery-light/60"
                             >
                                 {['Early Access', 'Exclusive Discounts', 'Baking Tips', 'New Arrivals'].map((benefit, i) => (
                                     <div key={i} className="flex items-center">

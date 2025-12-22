@@ -36,7 +36,7 @@ export default function Hero() {
     }));
 
     return (
-        <section className="relative h-screen w-full overflow-hidden">
+        <section className="relative min-h-[90vh] md:h-screen w-full overflow-hidden">
             {/* Parallax Background */}
             <motion.div
                 style={{ y: backgroundY }}
@@ -55,7 +55,7 @@ export default function Hero() {
                         scale: [1, 1.1, 1]
                     }}
                     transition={{ duration: 8, repeat: Infinity }}
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-bakery-accent/20 rounded-full blur-3xl"
+                    className="absolute top-1/4 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-bakery-accent/20 rounded-full blur-3xl"
                 />
             </motion.div>
 
@@ -77,7 +77,7 @@ export default function Hero() {
                     className="flex items-center mb-6"
                 >
                     <Sparkles size={16} className="text-bakery-accent mr-2 animate-pulse-soft" />
-                    <span className="text-bakery-accent text-lg md:text-xl tracking-[0.3em] font-medium uppercase">
+                    <span className="text-bakery-accent text-sm md:text-lg lg:text-xl tracking-[0.2em] md:tracking-[0.3em] font-medium uppercase">
                         Artisanal & Authentic
                     </span>
                     <Sparkles size={16} className="text-bakery-accent ml-2 animate-pulse-soft" />
@@ -89,7 +89,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-bakery-paper mb-2 leading-tight"
+                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-bakery-paper mb-2 leading-tight"
                     >
                         Baking Life
                     </motion.h1>
@@ -99,7 +99,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight"
+                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 md:mb-6 leading-tight"
                     >
                         <span className="gradient-text-animated">Sweet</span>
                     </motion.h1>
@@ -110,7 +110,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
-                    className="text-gray-300 text-lg md:text-xl max-w-2xl font-light mb-10 leading-relaxed"
+                    className="text-gray-300 text-base md:text-lg lg:text-xl max-w-2xl font-light mb-6 md:mb-10 leading-relaxed px-2"
                 >
                     Crafting moments of joy with every loaf, pastry, and cake. <br className="hidden md:block" />
                     Experience the taste of tradition in every bite.
@@ -127,7 +127,7 @@ export default function Hero() {
                         <motion.button
                             whileHover={{ scale: 1.05, y: -3 }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-bakery-accent text-bakery-dark font-bold py-4 px-10 rounded-full shadow-lg shadow-bakery-accent/30 hover:shadow-xl hover:shadow-bakery-accent/40 transition-all duration-300 btn-glow"
+                            className="bg-bakery-accent text-bakery-dark font-bold py-3 px-6 md:py-4 md:px-10 rounded-full shadow-lg shadow-bakery-accent/30 hover:shadow-xl hover:shadow-bakery-accent/40 transition-all duration-300 btn-glow text-sm md:text-base"
                         >
                             Explore Menu
                         </motion.button>
@@ -136,7 +136,7 @@ export default function Hero() {
                         <motion.button
                             whileHover={{ scale: 1.05, y: -3 }}
                             whileTap={{ scale: 0.98 }}
-                            className="border-2 border-white/30 text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-bakery-dark transition-all duration-300 backdrop-blur-sm"
+                            className="border-2 border-white/30 text-white font-bold py-3 px-6 md:py-4 md:px-10 rounded-full hover:bg-white hover:text-bakery-dark transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
                         >
                             Our Story
                         </motion.button>
@@ -148,20 +148,20 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 1 }}
-                    className="mt-16 flex items-center gap-8 text-white/50 text-sm"
+                    className="mt-8 md:mt-16 flex items-center gap-4 md:gap-8 text-white/50 text-xs md:text-sm"
                 >
                     <div className="flex items-center">
-                        <span className="text-bakery-accent font-bold text-2xl mr-2">40+</span>
+                        <span className="text-bakery-accent font-bold text-xl md:text-2xl mr-1 md:mr-2">40+</span>
                         <span>Years of<br />Excellence</span>
                     </div>
                     <div className="w-[1px] h-10 bg-white/20"></div>
                     <div className="flex items-center">
-                        <span className="text-bakery-accent font-bold text-2xl mr-2">3</span>
+                        <span className="text-bakery-accent font-bold text-xl md:text-2xl mr-1 md:mr-2">3</span>
                         <span>NYC<br />Locations</span>
                     </div>
                     <div className="w-[1px] h-10 bg-white/20 hidden sm:block"></div>
                     <div className="hidden sm:flex items-center">
-                        <span className="text-bakery-accent font-bold text-2xl mr-2">100%</span>
+                        <span className="text-bakery-accent font-bold text-xl md:text-2xl mr-1 md:mr-2">100%</span>
                         <span>Organic<br />Ingredients</span>
                     </div>
                 </motion.div>
@@ -180,7 +180,7 @@ export default function Hero() {
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="w-8 h-12 border-2 border-white/30 rounded-full flex items-start justify-center p-2 group-hover:border-white/50 transition-colors"
+                    className="w-6 h-10 md:w-8 md:h-12 border-2 border-white/30 rounded-full flex items-start justify-center p-1.5 md:p-2 group-hover:border-white/50 transition-colors"
                 >
                     <motion.div
                         animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
@@ -191,10 +191,10 @@ export default function Hero() {
             </motion.div>
 
             {/* Decorative corner frames */}
-            <div className="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-white/10"></div>
-            <div className="absolute top-8 right-8 w-20 h-20 border-r-2 border-t-2 border-white/10"></div>
-            <div className="absolute bottom-8 left-8 w-20 h-20 border-l-2 border-b-2 border-white/10"></div>
-            <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-white/10"></div>
+            <div className="absolute top-4 left-4 md:top-8 md:left-8 w-12 h-12 md:w-20 md:h-20 border-l-2 border-t-2 border-white/10"></div>
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 md:w-20 md:h-20 border-r-2 border-t-2 border-white/10"></div>
+            <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 w-12 h-12 md:w-20 md:h-20 border-l-2 border-b-2 border-white/10"></div>
+            <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-20 md:h-20 border-r-2 border-b-2 border-white/10"></div>
         </section>
     );
 }

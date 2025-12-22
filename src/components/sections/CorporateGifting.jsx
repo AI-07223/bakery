@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function CorporateGifting() {
     return (
-        <section className="py-24 bg-bakery-dark text-bakery-paper relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-bakery-dark text-bakery-paper relative overflow-hidden">
             {/* Background image with parallax feel */}
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=2897&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-bakery-dark via-bakery-dark/90 to-bakery-dark/70"></div>
@@ -18,7 +18,8 @@ export default function CorporateGifting() {
                 transition={{ duration: 6, repeat: Infinity }}
                 className="absolute top-20 right-20 text-bakery-accent/10"
             >
-                <Gift size={100} />
+                <Gift size={50} className="md:hidden" />
+                <Gift size={100} className="hidden md:block" />
             </motion.div>
             <motion.div
                 animate={{
@@ -28,7 +29,8 @@ export default function CorporateGifting() {
                 transition={{ duration: 5, repeat: Infinity, delay: 1.5 }}
                 className="absolute bottom-32 left-10 text-white/5"
             >
-                <Gift size={80} />
+                <Gift size={40} className="md:hidden" />
+                <Gift size={80} className="hidden md:block" />
             </motion.div>
 
             {/* Shimmer effect overlay */}
@@ -38,7 +40,7 @@ export default function CorporateGifting() {
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 pointer-events-none"
             />
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+            <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-16">
                 {/* Text Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -52,17 +54,17 @@ export default function CorporateGifting() {
                         <span className="text-bakery-accent font-bold tracking-widest uppercase">Corporate & Bulk</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-6xl font-serif font-bold mb-4 md:mb-6 leading-tight">
                         Sweeten Your <br />
                         <span className="gradient-text-animated">Connections</span>
                     </h2>
 
-                    <p className="text-bakery-light/80 text-lg mb-8 max-w-lg leading-relaxed">
+                    <p className="text-bakery-light/80 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed">
                         From office parties to client appreciation gifts, our bespoke hampers and bulk order services ensure you leave a lasting impression.
                     </p>
 
                     {/* Stats */}
-                    <div className="flex flex-wrap gap-8 mb-10">
+                    <div className="flex flex-wrap gap-4 md:gap-8 mb-6 md:mb-10">
                         {[
                             { icon: Building2, value: '500+', label: 'Corporate Clients' },
                             { icon: Users, value: '10K+', label: 'Events Catered' }
@@ -89,7 +91,7 @@ export default function CorporateGifting() {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-bakery-accent text-bakery-dark font-bold px-8 py-4 rounded-full hover:bg-white transition-colors btn-glow flex items-center"
+                            className="bg-bakery-accent text-bakery-dark font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-white transition-colors btn-glow flex items-center text-sm md:text-base"
                         >
                             <Gift size={18} className="mr-2" />
                             Download Brochure
@@ -98,7 +100,7 @@ export default function CorporateGifting() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-bakery-dark transition-all flex items-center group"
+                                className="border-2 border-white text-white font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-white hover:text-bakery-dark transition-all flex items-center group text-sm md:text-base"
                             >
                                 Enquire Now
                                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
