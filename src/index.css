@@ -1,51 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Lumière Patisserie Brand Theme */
-  --color-primary: #D4AF37;   /* Gold */
-  --color-secondary: #F9F5F0; /* Cream */
-  --color-background: #FFFFFF;
-  --color-foreground: #333333; /* Dark Grey/Black for text */
-  --color-accent: #2D2D2D;    /* Charcoal */
+@layer base {
+  body {
+    @apply bg-bakery-paper text-bakery-dark font-sans antialiased;
+  }
 
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Lato', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer components {
+
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-md bg-bakery-dark/80 border border-white/10;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #D4AF37, #F5D77A, #D4AF37);
+    background-size: 200% auto;
+  }
+
+  .gradient-text-animated {
+    @apply bg-clip-text text-transparent animate-gradient-shift;
+    background-image: linear-gradient(135deg, #D4AF37, #F5D77A, #D4AF37);
+    background-size: 200% auto;
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  /* Glow Button */
+  .btn-glow {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Decorative floating elements */
+  .floating-element {
+    @apply absolute pointer-events-none opacity-20;
+  }
+
+  /* 3D Tilt Effect Base */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(10px);
+  }
+
+  /* Decorative line */
+  .decorative-line {
+    @apply h-[2px] bg-gradient-to-r from-transparent via-bakery-accent to-transparent;
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[2px] bg-bakery-accent transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-}
-
-/* Custom Scrollbar for Chrome/Safari/Webkit */
+/* Custom Scrollbar for Webkit */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #d4d4d4;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
+  width: 10px;
 }
 
-/* Utility classes for Glassmorphism & Soft Shadows if needed directly in CSS */
-.glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+::-webkit-scrollbar-track {
+  @apply bg-bakery-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-bakery-medium rounded-full;
+  border: 2px solid theme('colors.bakery.light');
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-bakery-dark;
+}
+
+/* Additional utilities */
+@layer utilities {
+
+  /* Parallax container */
+  .parallax-container {
+    perspective: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* Text reveal animation */
+  .text-reveal {
+    @apply overflow-hidden;
+  }
+
+  .text-reveal>* {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
 }

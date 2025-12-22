@@ -1,87 +1,53 @@
-import React from 'react';
-import { siteConfig } from '../../config/siteConfig';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F9F5F0] pt-16 pb-8 border-t border-primary/10">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-bakery-dark text-bakery-light py-16">
+      <div className="container mx-auto px-6 text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start space-y-10 md:space-y-0">
 
-          {/* Brand Info */}
-          <div className="md:col-span-1">
-            <h3 className="font-heading font-bold text-2xl mb-6">{siteConfig.brand.name}</h3>
-            <p className="text-sm leading-relaxed text-gray-600 mb-6">
-              Baked from scratch using natural ingredients. Experience the finest French patisserie delivered to your doorstep.
+          {/* Brand */}
+          <div className="mb-6 md:mb-0">
+            <h2 className="text-3xl font-serif font-bold text-bakery-paper mb-2">
+              Lumière <span className="text-bakery-accent">Bakery</span>
+            </h2>
+            <p className="font-light text-sm max-w-xs mx-auto md:mx-0 opacity-80">
+              Artisanal baking with the finest ingredients.
+              Experience the warmth of tradition.
             </p>
-            <div className="flex gap-4">
-              {Object.entries(siteConfig.brand.socialLinks).map(([platform, url]) => (
-                <a
-                  key={platform}
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors border border-gray-200"
-                >
-                  <span className="sr-only">{platform}</span>
-                  {/* Simple generic icon since we don't have platform specific icons imported yet */}
-                  <span className="capitalize text-[10px] font-bold">{platform[0]}</span>
-                </a>
-              ))}
+          </div>
+
+          {/* Links */}
+          <div className="flex space-x-12">
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-bakery-accent">Explore</h4>
+              <ul className="space-y-2 opacity-80">
+                <li><Link to="/menu" className="hover:text-white transition-colors">Menu</Link></li>
+                <li><Link to="/story" className="hover:text-white transition-colors">Our Story</Link></li>
+                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-bakery-accent">Visit Us</h4>
+              <ul className="space-y-2 opacity-80">
+                <li>123 Baker Street</li>
+                <li>Sweet City, SC 90210</li>
+                <li>Daily: 7am - 8pm</li>
+              </ul>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-primary">Shop</h4>
-            <ul className="space-y-3">
-              <li><Link to="/category/cakes" className="text-sm hover:text-primary transition-colors">Cakes</Link></li>
-              <li><Link to="/category/breads" className="text-sm hover:text-primary transition-colors">Breads</Link></li>
-              <li><Link to="/category/cookies" className="text-sm hover:text-primary transition-colors">Cookies</Link></li>
-              <li><Link to="/category/gluten-free" className="text-sm hover:text-primary transition-colors">Gluten Free</Link></li>
-            </ul>
+          {/* Social */}
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-bakery-accent transition-colors"><Instagram size={24} /></a>
+            <a href="#" className="hover:text-bakery-accent transition-colors"><Facebook size={24} /></a>
+            <a href="#" className="hover:text-bakery-accent transition-colors"><Twitter size={24} /></a>
           </div>
-
-          {/* Customer Care */}
-          <div>
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-primary">Support</h4>
-            <ul className="space-y-3">
-              <li><Link to="/contact" className="text-sm hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link to="/shipping" className="text-sm hover:text-primary transition-colors">Shipping & Delivery</Link></li>
-              <li><Link to="/privacy" className="text-sm hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-sm hover:text-primary transition-colors">Terms & Conditions</Link></li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-primary">Stay Sweet</h4>
-            <p className="text-sm text-gray-600 mb-4">Subscribe for updates, new arrivals, and special offers.</p>
-            <form className="flex flex-col gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 bg-white border border-gray-200 focus:outline-none focus:border-primary text-sm"
-              />
-              <button className="w-full bg-black text-white px-4 py-3 text-xs font-bold uppercase tracking-widest hover:bg-primary transition-colors">
-                Subscribe
-              </button>
-            </form>
-          </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wide text-center md:text-left">
-            {siteConfig.brand.copyright}
-          </p>
-          <div className="flex gap-2 opacity-50 grayscale">
-             {/* Payment Icons Placeholder */}
-             <div className="w-8 h-5 bg-gray-300 rounded"></div>
-             <div className="w-8 h-5 bg-gray-300 rounded"></div>
-             <div className="w-8 h-5 bg-gray-300 rounded"></div>
-          </div>
+        <div className="border-t border-bakery-medium/30 mt-12 pt-8 text-center text-sm opacity-60">
+          <p>&copy; {new Date().getFullYear()} Lumière Bakery. All rights reserved.</p>
         </div>
       </div>
     </footer>

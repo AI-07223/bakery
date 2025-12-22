@@ -1,18 +1,21 @@
 import React from 'react';
-import Header from '../components/layout/Header';
+import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import MobileNav from '../components/layout/MobileNav';
 import { Outlet } from 'react-router-dom';
+import { CartProvider } from '../context/CartContext';
+import CartDrawer from '../components/layout/CartDrawer';
 
 export default function MainLayout() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-      <Footer />
-      <MobileNav />
-    </div>
+    <CartProvider>
+      <div className="flex flex-col min-h-screen bg-bakery-paper">
+        <Navbar />
+        <CartDrawer />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
